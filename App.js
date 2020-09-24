@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button,Platform } from "react-native";
+import { SafeAreaView, Platform } from "react-native";
 import { WebView } from "react-native-webview";
-import HTML_FILE from "./www/index.html";
+import HTML_FILE from "./android/app/src/main/assets/www/index.html";
 const isAndroid= Platform.OS==='android';
 
 export default class App extends Component {
@@ -19,7 +19,6 @@ export default class App extends Component {
             style={{flex: 1}}
             originWhitelist={['*']}
             source={{uri:'file:///android_asset/www/index.html'}}
-            style={{ marginTop: 5 }}
             javaScriptEnabled={true}
             domStorageEnabled={true}
           />
@@ -30,7 +29,6 @@ export default class App extends Component {
           style={{flex: 1}}
           originWhitelist={['*']}
           source={HTML_FILE}
-          style={{ marginTop: 5 }}
           javaScriptEnabled={true}
           domStorageEnabled={true}
         />
