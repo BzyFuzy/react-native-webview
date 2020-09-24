@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<title>창고_보관상품</title>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="Content-Language" content="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=0">
+		<meta name="format-detection" content="telephone=no">
+
+		<script type="text/javascript" src="../script/js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../script/js/jquery-ui-1.10.2.custom.js"></script>
+		<script type="text/javascript" src="../script/js/script.library.js"></script>
+		
+		<link rel="stylesheet" href="../script/css/jquery.ui.css">
+		<link rel="stylesheet" href="../script/css/style.common.css">
+		<link rel="stylesheet" href="../script/css/style.section.css">
+	</head>
+	<body>
+        <!-- #상단, 헤더, 페이지 머리 -->
+        <div class="header">
+            <ul>
+                <li><!--<button type="button" onclick="javascript:history.back(-1)"><img src="../images/icon_back.png" alt="뒤로"></button>--></li>
+                <li>보관상품</li>
+                <li><button type="button" onclick="javascript:searchForm()"><img src="../images/icon_search.png" alt="검색"></button></li>
+            </ul>
+        </div>
+        <div class="search_form">
+            <ul>
+                <li><input type="checkbox" id="option1"><label for="option1">샘플옵션1</label></li>
+                <li><input type="checkbox" id="option2"><label for="option2">샘플옵션2</label></li>
+                <li><input type="checkbox" id="option3"><label for="option3">샘플옵션3</label></li>
+                <li><input type="checkbox" id="option4"><label for="option4">샘플옵션4</label></li>
+                <li><input type="checkbox" id="option5"><label for="option5">샘플옵션5</label></li>
+            </ul>
+            <div>
+                <input type="text">
+                <input type="submit" value="검색">
+                <!--버튼유형 <button type="button">검색</button>-->
+            </div>
+        </div>
+
+        <script>
+            //검색 상세 토글
+            function searchForm(){
+                $(function(){
+                    var Obj_search = $(".search_form");
+                    Obj_search.slideToggle(350);
+                });
+            }
+        </script>
+
+        <!-- #컨텐츠, 본문 -->
+        <div class="content">
+            <!-- 탭구분 -->
+            <div class="keep_tab">
+                <div class="keep_tab_part">
+                    <a href="#" class="on"><span>이동중</span></a><!-- 선택된 탭에 class="on"을 삽입해주세요. -->
+                    <a href="#"><span></span>보관중</span></a>
+                </div>
+
+                <div class="under_focus"></div>
+            </div>
+            <script>
+                $(function(){
+                    //선택 탭 강조선 크기, 포지션 스크립트
+                    let obj_tab = $(".keep_tab").find(".on > span");
+                    var onsize = obj_tab.innerWidth();
+                    var onposition = obj_tab.position().left;
+                    let linner = $(".under_focus");
+
+                    linner.animate({width:onsize, left:onposition});
+                })
+            </script>
+
+            <!-- 창고 목록 샘플1 -->
+            <div class="inventory">
+                <div class="inventory_head">
+                    <p class="title"><b>파주 김훈남님</b>의 창고에 보관 중</p>
+                    <p class="manager">(담당 : 김훈남 010-0000-0000)</p>
+                    <p class="status">
+                        <span>품목</span> <b>24</b>개
+                        <span class="ml20">판매</span> <b>21</b>건
+                    </p>
+                </div>
+
+                <div class="goods_list">
+                    <div>
+                        <!-- 디바이스 크기에 따른 25%, 1열 4개의 이미지를 자동으로 조정합니다 -->
+                        <a href="#"><img src="../images/sample/01.jpg"></a>
+                        <a href="#"><img src="../images/sample/02.jpg"></a>
+                        <a href="#"><img src="../images/sample/03.jpg"></a>
+                        <a href="#"><img src="../images/sample/04.jpg"></a>
+                        <a href="#"><img src="../images/sample/05.jpg"></a>
+                        <a href="#"><img src="../images/sample/06.jpg"></a>
+                        <a href="#"><img src="../images/sample/07.jpg"></a>
+                        <a href="#"><img src="../images/sample/08.jpg"></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 창고 목록 샘플2 -->
+            <div class="inventory">
+                <div class="inventory_head">
+                    <p class="title"><b>2019 SS 재고</b></p>
+                </div>
+
+                <div class="goods_list">
+                    <div>
+                        <!-- 디바이스 크기에 따른 25%, 1열 4개의 이미지를 자동으로 조정합니다 -->
+                        <a href="#"><img src="../images/sample/01.jpg"></a>
+                        <a href="#"><img src="../images/sample/02.jpg"></a>
+                        <a href="#"><img src="../images/sample/03.jpg"></a>
+                        <a href="#"><img src="../images/sample/04.jpg"></a>
+                        <a href="#"><img src="../images/sample/05.jpg"></a>
+                        <a href="#"><img src="../images/sample/06.jpg"></a>
+                        <a href="#"><img src="../images/sample/07.jpg"></a>
+                        <a href="#"><img src="../images/sample/08.jpg"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- #하단 고정 메뉴 -->
+        <div class="footer">
+            <div>
+                <p>
+                    <a href="#"><img src="../images/icon_nav_home.png" alt="홈"><span>홈</span></a>
+                    <a href="#"><img src="../images/icon_nav_my.png" alt="내상품"><span>내상품</span></a>
+                    <a href="#"><img src="../images/icon_nav_keep.png" alt="보관상품"><span>보관상품</span></a>
+                    <a href="#"><img src="../images/icon_nav_sell.png" alt="판매정보"><span>판매정보</span></a>
+                    <a href="#"><img src="../images/icon_nav_qa.png" alt="문의관리"><span>문의관리</span></a>
+                </p>
+            </div>
+        </div>
+	</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<title>창고_내 창고</title>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="Content-Language" content="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=0">
+		<meta name="format-detection" content="telephone=no">
+
+		<script type="text/javascript" src="../script/js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../script/js/jquery-ui-1.10.2.custom.js"></script>
+		<script type="text/javascript" src="../script/js/script.library.js"></script>
+		
+		<link rel="stylesheet" href="../script/css/jquery.ui.css">
+		<link rel="stylesheet" href="../script/css/style.common.css">
+		<link rel="stylesheet" href="../script/css/style.section.css">
+	</head>
+	<body>
+        <!-- #상단, 헤더, 페이지 머리 -->
+        <div class="header">
+            <ul>
+                <li></li>
+                <li>내 창고</li>
+                <li></li>
+            </ul>
+        </div>
+
+        <!-- #컨텐츠, 본문 -->
+        <div class="content">
+            <!-- 유형 검색 -->
+            <div class="filter_search">
+                <div class="filter_search_form">
+                    <div>
+                        <button type="button" onclick="javascript:searchForm()">필터</button>
+                        <select>
+                            <option value="">선택</option>
+                        </select>
+                        <input type="text" placeholder="내용">
+                    </div>
+                    <div>
+                        <input type="image" src="../images/icon_color_search.png" alt="검색">
+                        <!--
+                            전송 타입 유형을 2가지 형태로 구성해두었습니다.
+                            단순 POST방식이라면 위 input:image를, 아니라면 아래 button방식으로 이용해주세요.
+                            <button type="button"><img src="../images/icon_color_search.png" alt="검색"></button>
+                        -->
+                    </div>
+                </div>
+            </div>
+            <div class="search_form">
+                <ul>
+                    <li><input type="checkbox" id="option1"><label for="option1">필터1</label></li>
+                    <li><input type="checkbox" id="option2"><label for="option2">필터2</label></li>
+                    <li><input type="checkbox" id="option3"><label for="option3">필터3</label></li>
+                    <li><input type="checkbox" id="option4"><label for="option4">필터4</label></li>
+                    <li><input type="checkbox" id="option5"><label for="option5">필터5</label></li>
+                </ul>
+            </div>
+    
+            <script>
+                //검색 필터 토글
+                function searchForm(){
+                    $(function(){
+                        var Obj_search = $(".search_form");
+                        Obj_search.slideToggle(350);
+                    });
+                }
+            </script>
+
+            <!-- 창고 목록 -->
+            <div class="warehouse_list">
+                <table class="default_table">
+                    <colgroup>
+                        <!-- 각 셀의 길이를 조정합니다.-->
+                        <col width="*">
+                        <col width="70">
+                        <col width="40%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>위치</th>
+                            <th>이용료</th>
+                            <th>상세</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><p class="al">이영훈님의 창고</p></td>
+                            <td><p class="ar">20,000</p></td>
+                            <td><p class="al">-</p></td>
+                        </tr>
+                        <tr>
+                            <td><p class="al">이영훈님의 창고</p></td>
+                            <td><p class="ar">20,000</p></td>
+                            <td><p class="al">-</p></td>
+                        </tr>
+                        <tr>
+                            <td><p class="al">이영훈님의 창고</p></td>
+                            <td><p class="ar">26,000</p></td>
+                            <td><p class="al">-</p></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- #하단 고정 메뉴 -->
+        <div class="footer">
+            <div>
+                <p>
+                    <a href="#"><img src="../images/icon_nav_home.png" alt="홈"><span>홈</span></a>
+                    <a href="#"><img src="../images/icon_nav_my.png" alt="내상품"><span>내상품</span></a>
+                    <a href="#"><img src="../images/icon_nav_keep.png" alt="보관상품"><span>보관상품</span></a>
+                    <a href="#"><img src="../images/icon_nav_sell.png" alt="판매정보"><span>판매정보</span></a>
+                    <a href="#"><img src="../images/icon_nav_qa.png" alt="문의관리"><span>문의관리</span></a>
+                </p>
+            </div>
+        </div>
+	</body>
+</html>

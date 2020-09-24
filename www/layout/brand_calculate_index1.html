@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<title>브랜드_정산정보_창고정산</title>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="Content-Language" content="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=0">
+		<meta name="format-detection" content="telephone=no">
+
+		<script type="text/javascript" src="../script/js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../script/js/jquery-ui-1.10.2.custom.js"></script>
+		<script type="text/javascript" src="../script/js/script.library.js"></script>
+		
+		<link rel="stylesheet" href="../script/css/jquery.ui.css">
+		<link rel="stylesheet" href="../script/css/style.common.css">
+		<link rel="stylesheet" href="../script/css/style.section.css">
+	</head>
+	<body>
+        <!-- #상단, 헤더, 페이지 머리 -->
+        <div class="header">
+            <ul>
+                <li><button type="button" onclick="javascript:history.back(-1)"><img src="../images/icon_back.png" alt="뒤로"></button></li>
+                <li>정산정보</li>
+                <li></li>
+            </ul>
+        </div>
+
+        <!-- #컨텐츠, 본문 -->
+        <div class="content">
+            <!-- 기간 검색 -->
+            <div class="date_search">
+                <div class="date_search_form">
+                    <div>
+                        <input type="text" class="date" readonly> ~
+                        <input type="text" class="date" readonly>
+                    </div>
+                    <div>
+                        <input type="image" src="../images/icon_refresh.png" alt="새로고침">
+                        <!--
+                            전송 타입 유형을 2가지 형태로 구성해두었습니다.
+                            단순 POST방식이라면 위 input:image를, 아니라면 아래 button방식으로 이용해주세요.
+                            <button type="button"><img src="../images/icon_refresh.png" alt="새로고침"></button>
+                        -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 유형 검색 -->
+            <div class="filter_search">
+                <div class="filter_search_form">
+                    <div>
+                        <button type="button" onclick="javascript:searchForm()">필터</button>
+                        <select>
+                            <option value="">선택</option>
+                        </select>
+                        <input type="text" placeholder="내용">
+                    </div>
+                    <div>
+                        <input type="image" src="../images/icon_color_search.png" alt="검색">
+                        <!--
+                            전송 타입 유형을 2가지 형태로 구성해두었습니다.
+                            단순 POST방식이라면 위 input:image를, 아니라면 아래 button방식으로 이용해주세요.
+                            <button type="button"><img src="../images/icon_color_search.png" alt="검색"></button>
+                        -->
+                    </div>
+                </div>
+            </div>
+            <div class="search_form">
+                <ul>
+                    <li><input type="checkbox" id="option1"><label for="option1">필터1</label></li>
+                    <li><input type="checkbox" id="option2"><label for="option2">필터2</label></li>
+                    <li><input type="checkbox" id="option3"><label for="option3">필터3</label></li>
+                    <li><input type="checkbox" id="option4"><label for="option4">필터4</label></li>
+                    <li><input type="checkbox" id="option5"><label for="option5">필터5</label></li>
+                </ul>
+            </div>
+    
+            <script>
+                //검색 필터 토글
+                function searchForm(){
+                    $(function(){
+                        var Obj_search = $(".search_form");
+                        Obj_search.slideToggle(350);
+                    });
+                }
+            </script>
+
+            <!-- 판매목록 -->
+            <div class="white_box">
+                <a class="warehouse_list"><!-- 링크 필요시 현재 줄에 href로 추가 -->
+                    <ul>
+                        <li>
+                            <p>창고료 결제</p>
+                            <p>이영훈님의 창고</p>
+                        </li>
+                        <li class="st">-36,000</li><!-- 마이너스 일시 class="st" 추가 -->
+                    </ul>
+                </a>
+
+                <a class="warehouse_list">
+                    <ul>
+                        <li>
+                            <p>상품판매 3건</p>
+                            <p>이영훈님의 창고</p>
+                            <p>김영희<span>(R구매자)</span></p>
+                        </li>
+                        <li>36,000</li>
+                    </ul>
+                </a>
+
+                <a class="warehouse_list">
+                    <ul>
+                        <li>
+                            <p>창고료 결제</p>
+                            <p>이영훈님의 창고</p>
+                        </li>
+                        <li class="st">-36,000</li>
+                    </ul>
+                </a>
+
+                <a class="warehouse_list">
+                    <ul>
+                        <li>
+                            <p>상품판매 3건</p>
+                            <p>이영훈님의 창고</p>
+                            <p>김영희<span>(R구매자)</span></p>
+                        </li>
+                        <li>36,000</li>
+                    </ul>
+                </a>
+            </div>
+        </div>
+
+        <!-- #하단 고정 메뉴 -->
+        <div class="footer">
+            <div>
+                <p>
+                    <a href="#"><img src="../images/icon_nav_home.png" alt="홈"><span>홈</span></a>
+                    <a href="#"><img src="../images/icon_nav_my.png" alt="내상품"><span>내상품</span></a>
+                    <a href="#"><img src="../images/icon_nav_keep.png" alt="보관상품"><span>보관상품</span></a>
+                    <a href="#"><img src="../images/icon_nav_sell.png" alt="판매정보"><span>판매정보</span></a>
+                    <a href="#"><img src="../images/icon_nav_qa.png" alt="문의관리"><span>문의관리</span></a>
+                </p>
+            </div>
+        </div>
+	</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<title>창고_판매관리_상세</title>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="Content-Language" content="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=0">
+		<meta name="format-detection" content="telephone=no">
+
+		<script type="text/javascript" src="../script/js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../script/js/jquery-ui-1.10.2.custom.js"></script>
+		<script type="text/javascript" src="../script/js/script.library.js"></script>
+		
+		<link rel="stylesheet" href="../script/css/jquery.ui.css">
+		<link rel="stylesheet" href="../script/css/style.common.css">
+		<link rel="stylesheet" href="../script/css/style.section.css">
+	</head>
+	<body>
+        <!-- #상단, 헤더, 페이지 머리 -->
+        <div class="header">
+            <ul>
+                <li><button type="button" onclick="javascript:history.back(-1)"><img src="../images/icon_back.png" alt="뒤로"></button></li>
+                <li>판매상세</li>
+                <li><!--<button type="button" onclick="javascript:searchForm()"><img src="../images/icon_search.png" alt="검색"></button>--></li>
+            </ul>
+        </div>
+
+        <!-- #컨텐츠, 본문 -->
+        <div class="content">
+            <!-- 상품 사진 슬라이드 -->
+            <div class="goods_image">
+                <div class="goods_image_inner">
+                    <!--
+                        - P태그와 함께 이미지를 삽입해주세요.
+                        - 이미지에 대한 제한적 수량, 파일명은 없습니다.
+                        - 삽입된 이미지는 영역 가로 크기 기준을 그대로 세로 크기가 계산되어 정사각형을 유지합니다
+                    -->
+                    <p><img src="../images/sample/big01.jpg" alt="샘플1"></p>
+                    <p><img src="../images/sample/big02.jpg" alt="샘플2"></p>
+                    <p><img src="../images/sample/big03.jpg" alt="샘플3"></p>
+                </div>
+                <div class="goods_img_no"><div><!-- 이미지 포인터 --></div></div>
+            </div>
+            <script>
+                $(function(){
+                    //간단한 모바일 터치 반응 이벤트
+                    var obj_img = $(".goods_image_inner").find("p");
+                    var imglength = obj_img.length;
+                    var imgpointer = $(".goods_img_no").find("div");
+                    var exstart = 0;
+                    var exend = 0;
+                    var selected = 0;
+                    
+                    for(i=0; i<imglength; i++){ //이미지의 개수만큼 이미지 포인터를 배분
+                        start = i == 0 ? ' class="on"' : '';
+                        imgpointer.append(' <a'+start+'></a> ');
+                    }
+
+                    obj_img.eq(0).show(); //첫 이미지 출력
+
+                    $(".goods_image_inner").bind({
+                        touchstart : function(e) {
+                            var event = e.originalEvent;
+                            exstart = event.touches[0].clientX;
+                        }, touchmove : function(e) {
+                            var event = e.originalEvent;
+                            exend = event.touches[0].clientX;
+                        }, touchend : function(e) {
+
+                            var oldno = selected;
+                            obj_img.eq(oldno).css({"z-index":"0"});
+
+                            if(exstart+50 < exend) {
+                                selected > 0 ? selected-- : selected = imglength-1;
+                                obj_img.eq(selected).show().css({left:"-100%","z-index":"1"}).animate({left:0},350,oldremove(oldno));
+                            } if(exstart-50 > exend) {
+                                selected < imglength-1 ? selected++ : selected = 0;
+                                obj_img.eq(selected).show().css({left:"100%","z-index":"1"}).animate({left:0},350,oldremove(oldno));
+                            }
+                            
+                            function oldremove(no){
+                                obj_img.eq(no).delay(350).hide(0);
+                            }
+                            imgpointer.find("a").removeClass("on");
+                            imgpointer.find("a").eq(selected).addClass("on");
+                        }
+                    });
+                });
+            </script>
+
+            <!-- 상세정보 -->
+            <div class="goods_about">
+                <div class="title">만사오케이 여성 겨울 루즈핏 스트리스 터들넥롱 원</div>
+
+                <ul class="option">
+                    <li>여성의류<span></span>티셔츠<span></span>플라티셔츠</li><!-- 카테고리 경로는 span으로 구분하며, span과의 공백없이 넣으시면 됩니다.-->
+                    <li>색상 : 카키, 그레이, 블랙, 커피</li>
+                    <li>크기 : M, MM, L, XL</li>
+                </ul>
+
+                <div class="goods_key">
+                    <div>
+                        <dl>
+                            <dt>관리코드</dt>
+                            <dd>202014517</dd>
+                        </dl>
+                        <dl>
+                            <dt>책정가</dt>
+                            <dd>34,580</dd>
+                        </dl>
+                        <dl>
+                            <dt>소재</dt>
+                            <dd>나일론</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="delivery">
+                    <div class="delivery_title">배송현황</div>
+                    <table class="default_table">
+                        <colgroup>
+                            <!-- 각 셀의 길이를 조정합니다.-->
+                            <col width="100">
+                            <col width="*">
+                            <col width="*">
+                            <col width="80">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>일시</th>
+                                <th>활동</th>
+                                <th>장소</th>
+                                <th>담당</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><p>2020.07.07 11:12</p></td>
+                                <td><p class="al">상품인수</p></td>
+                                <td><p class="al">자사창고</p></td>
+                                <td><p>김동훈<span>010-0001-5421</span></p></td>
+                            </tr>
+                            <tr>
+                                <td><p>2020.07.07 09:41</p></td>
+                                <td><p class="al">본사출고</p></td>
+                                <td><p class="al">본사물류</p></td>
+                                <td><p>이굿즈<span>010-0001-0054</span></p></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- #하단 고정 메뉴 -->
+        <div class="footer">
+            <div>
+                <p>
+                    <a href="#"><img src="../images/icon_nav_home.png" alt="홈"><span>홈</span></a>
+                    <a href="#"><img src="../images/icon_nav_my.png" alt="내상품"><span>내상품</span></a>
+                    <a href="#"><img src="../images/icon_nav_keep.png" alt="보관상품"><span>보관상품</span></a>
+                    <a href="#"><img src="../images/icon_nav_sell.png" alt="판매정보"><span>판매정보</span></a>
+                    <a href="#"><img src="../images/icon_nav_qa.png" alt="문의관리"><span>문의관리</span></a>
+                </p>
+            </div>
+        </div>
+	</body>
+</html>
